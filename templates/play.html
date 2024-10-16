@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="static/css/styles.css">
+  <title>Respawn Realm</title>
+</head>
+<body>
+  <!---Navbar-->
+  <nav class="navbar">
+    <div class="container">
+      <a href="templates/index.html" class="logo">
+        <img src="static/assets/respawn_realm_logo.png" class="logo-img" alt="Logo" />
+        <span class="logo-text">Respawn Realm</span>
+      </a>
+      <button data-collapse-toggle="navbar-default" type="button" class="menu-button" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+      </button>
+      <div class="menu" id="navbar-default">
+        <ul class="nav-links">
+          <li><a href="/" class="nav-item">Home</a></li>
+          <li><a href="#" class="nav-item active">Play</a></li>
+          <li><a href="/menu" class="nav-item">Menu</a></li>
+          <li><a href="/pricing" class="nav-item">Pricing</a></li>
+          <li><a href="http://127.0.0.1:5000/#footer" class="nav-item">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+</body>
+</html>
