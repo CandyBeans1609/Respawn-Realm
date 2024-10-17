@@ -1,203 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Font -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
   <!-- External CSS -->
   <link rel="stylesheet" href="static/css/styles.css">
   <title>Respawn Realm</title>
 </head>
 <body>
-  <!---Navbar-->
-  <nav class="navbar">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="http://127.0.0.1:5000" class="logo">
+          <img src="static/assets/respawn_realm_logo.png" class="logo-img" alt="Logo" />
+          <span class="logo-text">Respawn Realm</span>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button" class="menu-button" aria-controls="navbar-default" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+        </button>
+        <div class="menu" id="navbar-default">
+          <ul class="nav-links">
+            <li><a href="/" class="nav-item">Home</a></li>
+            <li><a href="/play" class="nav-item active">Play</a></li>
+            <li><a href="/menu" class="nav-item">Menu</a></li>
+            <li><a href="/pricing" class="nav-item">Pricing</a></li>
+            <li><a href="http://127.0.0.1:5000/#footer" class="nav-item">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+    <br>
     <div class="container">
-      <a href="http://127.0.0.1:5000" class="logo">
-        <img src="static/assets/respawn_realm_logo.png" class="logo-img" alt="Logo" />
-        <span class="logo-text">Respawn Realm</span>
-      </a>
-      <button data-collapse-toggle="navbar-default" type="button" class="menu-button" aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-      </button>
-      <div class="menu" id="navbar-default">
-        <ul class="nav-links">
-          <li><a href="/" class="nav-item">Home</a></li>
-          <li><a href="/play" class="nav-item active">Play</a></li>
-          <li><a href="/menu" class="nav-item">Menu</a></li>
-          <li><a href="/pricing" class="nav-item">Pricing</a></li>
-          <li><a href="http://127.0.0.1:5000/#footer" class="nav-item">Contact Us</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        <h1 class="wyg">Play Form</h1>
+        <br>
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <!-- User Form -->
+        <form class="form" action="{{ url_for('play') }}" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="plan">Choose Plan:</label>
+                <select id="plan" name="plan" required>
+                  <option value ="plan1">High End PC (1 hr) : ₹60</option>
+                  <option value ="plan2">High End PC (3 hrs) : ₹150</option>
+                  <option value ="plan3">High End PC (5 hrs) : ₹250</option>
+                  <option value ="plan4">Ultra End PC (1 hr) : ₹80</option>
+                  <option value ="plan5">Ultra End PC (3 hrs) : ₹200</option>
+                  <option value ="plan6">Ultra End PC (5 hrs) : ₹350</option>
+                  <option value ="plan7">PS5 (1 hr) : ₹100</option>
+                  <option value ="plan8">PS5 (2 controllers, 1 hr) : ₹150</option>
+                  <option value ="plan9">Steering Wheel (1 hr) : ₹100</option>
+                  <option value ="plan10">VR (1 hr) : ₹120</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+              <label>Menu Choices:</label>
+              <div class="menu-choices">
+                  <div>
+                      <input type="checkbox" id="menu1" name="menu" value="1">
+                      <label for="menu1">Veg Burger</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu2" name="menu" value="2">
+                      <label for="menu2">Paneer Cheese Burger</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu3" name="menu" value="3">
+                      <label for="menu3">Chicken Burger</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu4" name="menu" value="4">
+                      <label for="menu4">Chicken Grilled Cheese BUrger</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu5" name="menu" value="5">
+                      <label for="menu5">Margherita Pizza</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu6" name="menu" value="6">
+                      <label for="menu6">Paneer Peri Peri Pizza</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu7" name="menu" value="7">
+                      <label for="menu7">Veggie Supreme Pizza</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu8" name="menu" value="8">
+                      <label for="menu8">Chicken Tandoori Tikka Pizza</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu9" name="menu" value="9">
+                      <label for="menu9">White Sauce Pasta</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu10" name="menu" value="10">
+                      <label for="menu10">Creamy Tomato Pasta</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu11" name="menu" value="11">
+                      <label for="menu11">Spinach Pasta</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu12" name="menu" value="12">
+                      <label for="menu12">Roasted Red Pepper Pasta</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu13" name="menu" value="13">
+                      <label for="menu13">Coke</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu14" name="menu" value="14">
+                      <label for="menu14">Sprite</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu15" name="menu" value="15">
+                      <label for="menu15">Iced Coffee</label>
+                  </div>
+                  <div>
+                      <input type="checkbox" id="menu16" name="menu" value="16">
+                      <label for="menu16">Prime (Limited)</label>
+                  </div>
+              </div>
+          </div>
+          
+
+            <div class="buttons">
+                <input type="submit" value="Submit" class="button">
+                <input type="reset" value="Clear" class="button">
+            </div>
+        </form>
+        <br>
+        <br>
+
+<!-- Display Entries Below the Form -->
+
+<div class="entries">
+  <h2 style="color: white;">Submitted Entries</h2>
   <br>
-  <br>
-  <br>
-   <!--Form-->
-   <form class="max-w-sm mx-auto">
-    <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-    <div class="flex">
-      <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
-        </svg>
-      </span>
-      <input type="text" id="website-admin" class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bonnie Green">
-    </div>
-    <br>
-    <label for="email-address-icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-4">Your Email</label>
-    <div class="relative">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
-          <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"/>
-          <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
-        </svg>
-      </div>
-      <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com">
-    </div>
-    <br>
-    <div>
-      <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-4">Phone Number</label>
-      <input type="number" id="small-input" 
-             class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-             placeholder="Enter phone number" 
-             min="0" 
-             required>
-    </div>       
-      <br>
-    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-4">Select your plan</label>
-    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <option>High End PC (1 hr) : ₹60</option>
-      <option>High End PC (3 hrs) : ₹150</option>
-      <option>High End PC (5 hrs) : ₹250</option>
-      <option>Ultra End PC (1 hr) : ₹80</option>
-      <option>Ultra End PC (3 hrs) : ₹200</option>
-      <option>Ultra End PC (5 hrs) : ₹350</option>
-      <option>PS5 (1 hr) : ₹100</option>
-      <option>PS5 (2 controllers, 1 hr) : ₹150</option>
-      <option>Steering Wheel (1 hr) : ₹100</option>
-      <option>VR (1 hr) : ₹120</option>
-    </select>
-    <br>
-<!--checkboxes-->
-<div class="max-w-sm mx-auto mt-4">
-  <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-4">Choose snacks</label>
-  <div class="bg-gray-50 p-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600">
-    <fieldset>
-      <legend class="sr-only">Checkboxes</legend>
-
-      <!-- Changed the grid layout to a single column -->
-      <div>
-        <div class="flex items-center mb-2">
-          <input id="checkbox-1" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-1" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Veg Burger</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-2" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-2" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Paneer Cheese Burger</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-3" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-3" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chicken Burger</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-4" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-4" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chicken Grilled Cheese Burger</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-5" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-5" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Margherita Pizza</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-6" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-6" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Paneer Peri Peri Pizza</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-7" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-7" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Veggie Supreme Pizza</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-8" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-8" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Chicken Tandoori Tikka Pizza</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-9" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-9" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">White Sauce Pasta</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-10" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-10" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Creamy tomato Pasta</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-11" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-11" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Spinach Pasta</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-12" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-12" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Roasted Red Pepper Pasta</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-13" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-13" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Coke</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-14" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-14" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sprite</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-15" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-15" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Iced Coffee</label>
-        </div>
-
-        <div class="flex items-center mb-2">
-          <input id="checkbox-16" type="checkbox" class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:bg-gray-700 dark:border-gray-600">
-          <label for="checkbox-16" class="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Prime (Limited)</label>
-        </div>
-      </div>
-    </fieldset>
-  </div>
+  {% if entries %}
+      <ul class="list-unstyled">
+          {% for entry in entries %}
+          <li class="entry-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <div>
+                  <strong class="text-bold">{{ entry.username }}</strong><br>
+                  Email: {{ entry.email }}<br>
+                  Phone: {{ entry.phone }}<br>
+                  Plan: {{ entry.plan }}<br>
+                  <span class="menu-choices-label">Menu Choices:</span> {{ entry.menu_choices }}<br>
+              </div>
+              <div style="margin-left: auto;"> <!-- Aligns the delete button to the right -->
+                  <!-- Delete Form -->
+                  <form action="{{ url_for('delete_entry', id=entry.id) }}" method="POST" style="display:inline;">
+                      <button type="submit" class="button delete-button" style="background-color: #5a54d1; color: white; border: none; padding: 10px 10px; cursor: pointer;">
+                          Delete
+                      </button>
+                  </form>
+              </div>
+          </li>
+          {% endfor %}
+      </ul>
+  {% else %}
+      <p class="no-entries-message">No entries found.</p>
+  {% endif %}
 </div>
-</div>
-</div>
-<br>
-    <!--Form Buttons-->
 
-    <div class="flex justify-center mt-4">
-      <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1.5 w-24 mr-2 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
-        Submit
-      </button>
-      <button type="button" onclick="document.querySelector('form').reset();" class="text-gray-900 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-1.5 w-24 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-        Clear
-      </button>
-    </div>
-    </div>
-    <br>
-    <br>
-    <br>
-  </form>
-<br>
-<br>
-<!--display data-->
 </body>
 </html>

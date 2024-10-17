@@ -411,3 +411,101 @@ th {
 }
 
 /* Play*/
+.form-group {
+  display: flex; /* Center align items */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center horizontally */
+  margin-bottom: 20px; /* Space between form groups */
+}
+
+label {
+  /*font-weight: bold;*/
+  margin-bottom: 5px; /* Space between label and input */
+  color: #ffffff; /* Darker text color for labels */
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="age"], select {
+  width: 300px; /* Fixed width for input elements */
+  padding: 10px; /* Padding for a better look */
+  border: 1px solid #c0c0c0; /* Light grey border */
+  border-radius: 5px; /* Rounded corners */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+  font-size: 14px; /* Adjust font size */
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="age"]:focus, select:focus {
+  border-color: #6c63ff; /* Purple color on focus */
+  outline: none; /* Remove outline */
+}
+
+input[type="radio"] {
+  margin-right: 10px; /* Space between radio button and label */
+}
+
+.buttons {
+  display: flex; /* Use flexbox for button alignment */
+  justify-content: center; /* Center buttons */
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px; /* Space above buttons */
+}
+
+input[type="submit"], input[type="reset"] {
+  background-color: #6c63ff; /* Purple background for buttons */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Padding for buttons */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+  background-color: #5a54d1; /* Darker purple on hover */
+}
+
+.entries {
+  margin-top: 30px; /* Space above entries section */
+}
+
+.entries h2 {
+  color: #333; /* Darker color for headings */
+}
+
+/*Diaplay values*/
+
+.list-unstyled {
+  list-style-type: none;
+  padding: 0;
+}
+
+.entry-item {
+  background-color: rgb(253, 251, 255); /* semi-transparent background */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.menu-choices-label {
+  font-weight: normal; /* or adjust as necessary */
+}
+
+.no-entries-message {
+  color: grey; /* or another color for no entries */
+}
+
+.delete-button {
+  background-color: rgb(211, 211, 245);
+  color: white;
+  border: none; /* Remove default border */
+  padding: 5px 10px; /* Add some padding */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.delete-button:hover {
+  background-color: rgb(215, 215, 247); /* Darker shade on hover */
+}

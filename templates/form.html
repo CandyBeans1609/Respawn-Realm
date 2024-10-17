@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Form with SQLAlchemy</title>
+</head>
+<body>
+    <h1>Add User</h1>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- User Form -->
+    <form action="/" method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Phone:</label><br>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <label for="plan">Plan:</label><br>
+        <select id="plan" name="plan" required>
+            <option value="Basic">Basic</option>
+            <option value="Premium">Premium</option>
+            <option value="Gold">Gold</option>
+        </select><br><br>
+
+        <label>Snacks:</label><br>
+        <input type="checkbox" name="snacks" value="Chips"> Chips<br>
+        <input type="checkbox" name="snacks" value="Cookies"> Cookies<br>
+        <input type="checkbox" name="snacks" value="Nuts"> Nuts<br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Display Users -->
+    <h2>Users List</h2>
+    <ul>
+        {% for user in users %}
+        <li>
+            {{ user.username }} - {{ user.email }} - {{ user.phone }} - {{ user.plan }} - {{ user.snacks }}
+            <form action="{{ url_for('delete_user', id=user.id) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
